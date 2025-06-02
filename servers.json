@@ -1,0 +1,44 @@
+{
+    "mcpServers": {
+        "sequential-thinking": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+            "transportType": "stdio"
+        },
+        "exa": {
+            "command": "npx",
+            "args": ["-y", "exa-mcp-server"],
+            "env": {
+                "EXA_API_KEY": "${EXA_API_KEY}"
+            },
+            "transportType": "stdio"
+        },
+        "weather": {
+            "command": "node",
+            "args": ["/app/mcps/weather/build/index.js"],
+            "transportType": "stdio",
+            "requirements": [
+                {
+                    "name": "node",
+                    "version": ">=20.0.0"
+                }
+            ],
+            "pre:run": [
+                {
+                    "command": "npm",
+                    "args": ["run", "build"],
+                    "cwd": "/app/mcps/weather"
+                }
+            ]
+        },
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "/app/data"
+            ],
+            "transportType": "stdio"
+        }
+    }
+}

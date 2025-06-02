@@ -1,0 +1,97 @@
+# Environment files - Keep secrets safe
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+.env.*.local
+
+# Node.js dependencies and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# Build artifacts and compiled code
+build/
+dist/
+coverage/
+*.tsbuildinfo
+.nyc_output/
+lib-cov/
+*.tgz
+*.tar.gz
+
+# Docker related (but not our main Dockerfile)
+docker-compose.override.yml
+.docker/
+*.dockerignore.bak
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/.ropeproject
+.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# Runtime and temporary files
+*.tmp
+*.temp
+.cache/
+.npm/
+.yarn/
+.pnpm-store/
+.eslintcache
+.stylelintcache
+
+# Git merge artifacts
+*.orig
+*.rej
+
+# Local development and testing
+local_*
+test_*
+debug_*
+experiments/
+playground/
+scratch/
+data/
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Package manager lock files (keep package-lock.json for reproducible builds)
+# yarn.lock
+# pnpm-lock.yaml
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Keep important files
+!.env.example
+!.gitkeep
+!.vscode/mcp.json
