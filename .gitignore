@@ -14,6 +14,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 *.log
+.vscode/
+
 
 # Build artifacts and compiled code
 build/

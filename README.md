@@ -42,13 +42,13 @@ cp .env.example .env
 ./run.sh
 
 # Or manually:
-docker build -t mcp-proxy-server:latest .
+docker build -t docker-mcp-proxy:latest .
 
 # With .env file and data volume:
-docker run -d --name mcp-proxy-server -p 5700:5700 -v "$(pwd)/data:/app/data" --env-file .env mcp-proxy-server:latest
+docker run -d --name docker-mcp-proxy -p 5700:5700 -v "$(pwd)/data:/app/data" --env-file .env docker-mcp-proxy:latest
 
 # Without .env file (exa server won't work):
-docker run -d --name mcp-proxy-server -p 5700:5700 -v "$(pwd)/data:/app/data" mcp-proxy-server:latest
+docker run -d --name docker-mcp-proxy -p 5700:5700 -v "$(pwd)/data:/app/data" docker-mcp-proxy:latest
 ```
 
 **Note**: The `-v "$(pwd)/data:/app/data"` volume mount is essential for the filesystem MCP server to access your local `data/` directory.
@@ -342,10 +342,10 @@ This setup uses environment variables to configure API keys and other sensitive 
 
 ## Troubleshooting
 
--   Check container logs: `docker logs mcp-proxy-server`
+-   Check container logs: `docker logs docker-mcp-proxy`
 -   Verify container is running: `docker ps | grep mcp-proxy`
 -   Test status endpoint: `curl http://localhost:5700/status`
--   Restart container: `docker restart mcp-proxy-server`
+-   Restart container: `docker restart docker-mcp-proxy`
 
 ## Architecture
 
@@ -479,13 +479,13 @@ cp .env.example .env            # Copy environment template
 ./run.sh                        # Build and run everything
 
 # Management
-docker logs mcp-proxy-server   # View logs
-docker stop mcp-proxy-server   # Stop container
-docker restart mcp-proxy-server # Restart container
+docker logs docker-mcp-proxy   # View logs
+docker stop docker-mcp-proxy   # Stop container
+docker restart docker-mcp-proxy # Restart container
 ./test.sh                      # Test all endpoints
 
 # Development
-docker logs -f mcp-proxy-server # Follow logs in real-time
+docker logs -f docker-mcp-proxy # Follow logs in real-time
 ```
 
 ### Server URLs (for VS Code integration)
@@ -509,7 +509,7 @@ docker logs -f mcp-proxy-server # Follow logs in real-time
 
 -   **Exa not working**: Check `EXA_API_KEY` in `.env`
 -   **File operations failing**: Ensure `data/` directory exists
--   **Server not starting**: Check `docker logs mcp-proxy-server`
--   **Port 5700 in use**: Stop existing container with `docker stop mcp-proxy-server`
+-   **Server not starting**: Check `docker logs docker-mcp-proxy`
+-   **Port 5700 in use**: Stop existing container with `docker stop docker-mcp-proxy`
 
 The setup is now complete and ready for VS Code integration!

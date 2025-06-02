@@ -26,6 +26,11 @@
             "pre:run": [
                 {
                     "command": "npm",
+                    "args": ["ci"],
+                    "cwd": "/app/mcps/weather"
+                },
+                {
+                    "command": "npm",
                     "args": ["run", "build"],
                     "cwd": "/app/mcps/weather"
                 }

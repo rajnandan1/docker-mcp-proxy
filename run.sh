@@ -2,20 +2,20 @@
 set -e
 
 echo "Building Docker container with mcp-proxy..."
-docker build -t mcp-proxy-server:latest .
+docker build -t docker-mcp-proxy:latest .
 
 echo "Stopping any existing container..."
-docker stop mcp-proxy-server || true
-docker rm mcp-proxy-server || true
+docker stop docker-mcp-proxy || true
+docker rm docker-mcp-proxy || true
 
 echo "Starting mcp-proxy server..."
 # Check if .env file exists and use it
 if [ -f ".env" ]; then
     echo "Using .env file for environment variables..."
-    docker run -d --name mcp-proxy-server -p 5700:5700 -v "$(pwd)/data:/app/data" --env-file .env mcp-proxy-server:latest
+    docker run -d --name docker-mcp-proxy -p 5700:5700 -v "$(pwd)/data:/app/data" --env-file .env docker-mcp-proxy:latest
 else
     echo "No .env file found, using default environment..."
-    docker run -d --name mcp-proxy-server -p 5700:5700 -v "$(pwd)/data:/app/data" mcp-proxy-server:latest
+    docker run -d --name docker-mcp-proxy -p 5700:5700 -v "$(pwd)/data:/app/data" docker-mcp-proxy:latest
 fi
 
 echo "Waiting for server to start..."
@@ -32,7 +32,7 @@ node list-endpoints.js
 
 echo ""
 echo "VS Code configuration updated in .vscode/mcp.json"
-echo "Container name: mcp-proxy-server"
+echo "Container name: docker-mcp-proxy"
 echo ""
-echo "To stop the server: docker stop mcp-proxy-server"
-echo "To view logs: docker logs mcp-proxy-server"
+echo "To stop the server: docker stop docker-mcp-proxy"
+echo "To view logs: docker logs docker-mcp-proxy"
